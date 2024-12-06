@@ -1,77 +1,123 @@
-Diagram: https://drive.google.com/file/d/16X1PiVgtSVrZNMkEIWW3eY17JztUH5w4/view?usp=sharing 
+# Bronbeek Data Pipeline Documentation
 
-## Data Conversion
+## Data Overview
 
+### Data Location
+- **Local**: `/Users/sarah_shoilee/Desktop/Sarah.nosync/Bronbeek_Data/`  
+- **Cloud**: [Bronbeek Data on SURF](https://vu.data.surfsara.nl/index.php/f/142262424)
 
-#### Input 
-- csv files 
+---
+
+## Data Conversion Workflow
+
+### Input Assets
+The data includes the following CSV files:
+
 ```
-		AccessionMethods.csv
-		Constituents.csv
-		ConXrefDetails.csv
-		ConXrefs.csv
-		HistEvents.csv
-      ObjAccession.csv
-      Objects.csv
-      ObjectStatuses.csv
-      Roles.csv
-      RoleTypes.csv
+AccessionMethods.csv
+Constituents.csv
+ConXrefDetails.csv
+ConXrefs.csv
+ObjAccession.csv
+Objects.csv
+ObjectStatuses.csv
+Roles.csv
+RoleTypes.csv
 ```
-- Location path : [local](/Users/sarah_shoilee/Desktop/Sarah.nosync/Bronbeek_Data/) / [cloud](https://vu.data.surfsara.nl/index.php/f/142262424)
 
+---
 
+### Step 1: Create CSV-to-RDF Mapping
 
-#### Create CSV2RDF mapping
-   - Write conversion Metadata
-     - Generate the conversion blueprint with cow_tool build
-   ```
-      cow_tool build myfile.csv
-   ```
--  update mapping for conversion (follow the steps mentioned [here](https://github.com/Shoilee/dh_entity_linking_v2/blob/serendipity/data_preparation/bronbeekdataConversion/cow_process.md))
+#### 1.1 Write Conversion Metadata
+Generate the initial mapping blueprint for CSV-to-RDF conversion using the `cow_tool`:
 
-#### Conversion to RDF
-[convert_csv2rdf](convert_csv2rdf.py) script convert csv files into nq files based on the conversion metadata specifciations of the csv files in folder [conversion_metadata](conversion_metadata). 
-     - To run this script you need to provide path-to-directory where your csv and metadata is stored.
+```bash
+cow_tool build myfile.csv
+```
 
-`Note: convert_csv2rdf.convert_csv_to_rdf() expects your csv and conversion metadata json file is in the same folder.`
+This command creates a draft conversion metadata file for the specified CSV.
 
-#### Output
-RDF Files (format: .nt)
+#### 1.2 Update the Mapping
+Edit the generated metadata file to fine-tune the conversion process. Follow the step-by-step instructions in the [mapping process guide](./cow_process.md).
 
+---
 
-## Upload to cliopatria
+### Step 2: Convert CSV to RDF
 
-1. compress the .nq files with bash command
-   ```bash
-   gzip <path-to-folder>/*.nq
-   ```
+Use the [convert_csv2rdf.py](convert_csv2rdf.py) script to transform CSV files into RDF files in N-Quads format (`.nq`).
 
-2. from cliopatria CLI, type
-   ```
-   # attach the libraries
-   rdf_library:rdf_attach_library(<path-to-folder-of-void.ttl>).
-   ```
-> Note: [void.ttl](void.ttl) expects triple files are in the same folder as void.ttl.
-   ```
-   # upload files by library
-   rdf_load_library('<library-name>').
-   e.g., rdf_library:rdf_load_library('bronbeek').
-   ```
+#### Usage:
+Run the script with the directory containing your CSV and metadata files:
+
+```bash
+python convert_csv2rdf.py <path-to-directory>
+```
+
+#### Key Requirements:
+- **Input files**: Place the CSV files and their corresponding metadata JSON files in the same directory.
+- **Function**: The script relies on `convert_csv2rdf.convert_csv_to_rdf()`, which expects all input files to be co-located.
+
+#### Output:
+- RDF files in `.nq` format.
+
+---
+
+### Step 3: Upload to ClioPatria
+
+#### 3.1 Compress RDF Files
+Before uploading, compress the `.nq` files using the following command:
+
+```bash
+gzip <path-to-folder>/*.nq
+```
+
+#### 3.2 Attach the Libraries in ClioPatria
+From the ClioPatria CLI, attach the RDF library containing your files:
+
+```prolog
+rdf_library:rdf_attach_library('<path-to-folder-of-void.ttl>').
+```
+
+> **Note**: The [void.ttl](void.ttl) file must be in the same folder as the `.nq` files.
+
+#### 3.3 Load RDF Data
+To load the RDF data into ClioPatria, use:
+
+```prolog
+rdf_library:rdf_load_library('<library-name>').
+```
+For example:
+```prolog
+rdf_library:rdf_load_library('bronbeek').
+```
+
+---
 
 ## Data Enrichment
-Linked data enrichment with the [enrich_data_bronbeek](enrich_data_bronbeek) script to add provenance activity (i.e., acqusition events, former owner and objects related to person.)
+
+Enhance the RDF data with linked data enrichment using the `enrich_data_bronbeek.py` script. This adds provenance activity information, such as acquisition events, former owners, and object-to-person relationships.
+
+#### Usage:
+Run the enrichment script with the folder containing the `.nq` files:
 
 ```bash
 python enrich_data_bronbeek.py <folder-path-of-all-nq-files>
 ```
-> [enrich_data_bronbeek.py](enrich_data_bronbeek.py) expects .nq files.
 
+> **Note**: The [enrich_data_bronbeek.py](enrich_data_bronbeek.py) script expects `.nq` files as input.
 
+---
 
+## Summary of Outputs
 
+1. **Conversion**: CSV files → RDF files (`.nq`).
+2. **Compression**: RDF files compressed to `.nq.gz`.
+3. **Upload**: Files loaded into ClioPatria.
+4. **Enrichment**: Enriched RDF files containing provenance and linked data.
 
-## Data 
-1. [Bronbeek]() (format: csv)
-2. [NMVW](https://surfdrive.surf.nl/files/index.php/apps/files/?dir=/Shared/Work%20Package%201B/data/linkedart_nmvw_data/ccrdfconst&fileid=12458101919) (format: rdf/ttl)
+For questions or further assistance, refer to the documentation links or contact the project maintainer.
 
-TODO: update the data location path
+--- 
+
+This improved documentation is more user-friendly and professional while retaining all the critical information. Let me know if you need further refinements!

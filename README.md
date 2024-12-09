@@ -40,6 +40,7 @@ This command creates a draft conversion metadata file for the specified CSV.
 
 #### 1.2 Update the Mapping
 Edit the generated metadata file to fine-tune the conversion process. Follow the step-by-step instructions in the [mapping process guide](./cow_process.md).
+- [mapping details](https://docs.google.com/document/d/12hXBqdUr_LVh96ltt8DTXUMrewWByzCNndjEBMzqAis/edit?usp=sharing)
 
 ---
 

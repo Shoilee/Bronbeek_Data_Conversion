@@ -1,0 +1,83 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix shp: <https://pressingmatter.nl/Bronbeek/shape> .
+
+# Shape for E22_Human-Made_Object
+shp:E22_HumanMadeObjectShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E22_Human-Made_Object ;  # Target instances of E22_Human-Made_Object
+  sh:name "Object shape"@en ;
+  sh:description "Data Model for Bronbeek's Object"@en ;
+  sh:targetClass crm:E22_Human_Made_Object ;
+  sh:closed false ;
+  sh:ignoredProperties (rdf:type) ;
+  sh:ignoredProperties (rdfs:label) ;
+  sh:property [
+    sh:path crm:P1_is_identified_by ;
+    sh:node [
+      sh:or ( 
+        shp:E42_IdentifierShape 
+        shp:E33_E41_LinguisticAppellationShape
+      ) ;  # Either an identifier or a linguistic appellation
+    ] ;
+    sh:minCount 1 ; 
+    sh:message "The object must have at least one identifier or linguistic appellation." ;
+  ] .
+
+# Shape for E42_Identifier
+shp:E42_IdentifierShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E42_Identifier ;  # Target instances of E42_Identifier
+  sh:name "Indentifer shape"@en ;
+  sh:description "Accession number used by Bronbeek museum"@en ;
+  sh:deactivated false ;
+sh:property [
+    sh:path crm:P190_has_symbolic_content ;
+    sh:datatype xsd:string ;  # Symbolic content should be a string
+    sh:minCount 1 ;  
+    sh:message "An identifier must have symbolic content as a string." ;
+] ;
+sh:property [
+    sh:path crm:P2_has_type ;
+    sh:nodeKind sh:IRI ;  # Links to aat vocabulary
+    sh:class crm:E55_Type ;  # Type must reference an E55_Type
+    sh:pattern "^http://vocab\\.getty\\.edu/aat/.*" ;  # Regex for prefix
+    sh:minCount 0 ;  # Optional property
+    sh:message "An identifier can be described with AAT vocabulary." ;
+  ] .
+
+# Shape for E33_E41_LinguisticAppellation
+shp:E33_E41_LinguisticAppellationShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E33_E41_Linguistic_Appellation ;  # Target instances of E33_E41_Linguistic_Appellation
+  sh:name "Title"@en ;
+  sh:description "Title used by Bronbeek museum"@en ;
+  sh:deactivated false ;
+sh:property [
+    sh:path crm:P190_has_symbolic_content ;
+    sh:datatype xsd:string ;  # Symbolic content should be a string
+    sh:minCount 1 ;  
+    sh:message "A linguistic appellation must have symbolic content as a string." ;
+] ;
+sh:property [
+    sh:path crm:P2_has_type ;
+    sh:nodeKind sh:IRI ;  # Links to aat vocabulary
+    sh:class crm:E55_Type ;  # Type must reference an E55_Type
+    sh:pattern "^http://vocab\\.getty\\.edu/aat/.*" ;  # Regex for prefix
+    sh:minCount 0 ;  # Optional property
+    sh:message "A linguistic appellation must have a type referencing an E55_Type." ;
+  ] .
+
+# Shape for E55_Type
+shp:E55_TypeShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E55_Type ;  # Target instances of E55_Type
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;  # Label must be a language-tagged string
+    sh:minCount 1 ;
+    sh:message "A type must have a label as a language-tagged string." ;
+  ] .

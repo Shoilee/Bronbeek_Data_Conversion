@@ -25,6 +25,39 @@ shp:E22_HumanMadeObjectShape
     ] ;
     sh:minCount 1 ; 
     sh:message "The object must have at least one identifier or linguistic appellation." ;
+  ] ;
+  sh:property [
+    sh:path crm:P67i_is_referred_to_by ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node shp:E33_LinguisticObjectShape ; 
+    sh:minCount 0 ; 
+    sh:message "A HumanMadeObject may be referred to a LinguisticObject, e.g., dimension, inscription or description." ;
+  ];
+  sh:property [
+    sh:path crm:P45_consists_of ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node shp:E57_MaterialShape ;  
+    sh:minCount 0 ;  
+    sh:message "A HumanMadeObject may be referred to a LinguisticObject, e.g., dimension statement." ;
+  ];
+  .
+
+# Dimension, Inscibed, Description has been expresssed with Linguistic Object
+# Shape for LinguisticObject
+shp:E33_LinguisticObjectShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E33_Linguistic_Object ;  # Target LinguisticObject type
+  sh:property [
+    sh:path crm:P2_has_type ;
+    sh:node shp:E55_TypeShape ;  # Points to Type
+    sh:minCount 1 ;  # At least one classified_as is required
+    sh:message "A LinguisticObject must be classified as a Type." ;
+  ] ;
+  sh:property [
+    sh:path crm:P190_has_symbolic_content ;
+    sh:datatype xsd:string ;  # Content must be a string
+    sh:minCount 1 ;  # At least one content is required 
+    sh:message "A LinguisticObject must have content as a string." ;
   ] .
 
 # Shape for E42_Identifier
@@ -75,6 +108,17 @@ sh:property [
 shp:E55_TypeShape
   a sh:NodeShape ;
   sh:targetClass crm:E55_Type ;  # Target instances of E55_Type
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;  # Label must be a language-tagged string
+    sh:minCount 1 ;
+    sh:message "A type must have a label as a language-tagged string." ;
+  ] .
+
+# Shape for E57_Material
+shp:E57_MaterialShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E57_Material ;  # Target instances of E57_Material
   sh:property [
     sh:path rdfs:label ;
     sh:datatype xsd:string ;  # Label must be a language-tagged string

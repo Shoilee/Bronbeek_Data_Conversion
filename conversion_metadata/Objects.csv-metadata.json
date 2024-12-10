@@ -120,6 +120,7 @@
         "@id": "https://example.com/id/Objects.csv/column/Title"
     },
     {
+        "name": "ObjectNumber",
         "dc:description": ["intermediatry URI for object number"],
         "datatype": "string",
         "propertyUrl": "cidoc:P1_is_identified_by",
@@ -127,6 +128,7 @@
         "@id": "https://example.com/id/Objects.csv/virtual/ObjectNumber"
     },
     {
+        "name": "ObjectNumber",
         "virtual": true,
         "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/object_number",
         "propertyUrl": "rdf:type",
@@ -140,6 +142,7 @@
         "@id": "https://example.com/id/Objects.csv/column/ObjectNumber"
     },
     {
+        "name": "ObjectNumber",
         "virtual": true,
         "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/object_number",
         "propertyUrl": "cidoc:P2_has_type",
@@ -147,18 +150,21 @@
         "@id": "aat:300312355"
     },
     {
+        "name": "ObjectNumber",
         "virtual": true,
         "aboutUrl" : "aat:300312355",
         "propertyUrl": "rdf:type",
         "valueUrl": "cidoc:E55_Type"
     },
     {
+        "name": "ObjectNumber",
         "virtual": true,
         "aboutUrl" : "aat:300312355",
         "propertyUrl": "rdfs:label",
         "csvw:value": "Accession Number"
     },
     {
+        "name": "Medium",
         "dc:description": "intermediary Medium uri",
         "null": ["NULL"],
         "propertyUrl": "cidoc:P45_consists_of",
@@ -166,6 +172,7 @@
         "@id": "https://example.com/id/Objects.csv/virtual/Medium"
     },
     {
+        "name": "Medium",
         "virtual":true,
         "aboutUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Medium",
         "propertyUrl": "rdf:type",
@@ -222,18 +229,21 @@
         "csvw:value": "dimensions description"
     },
     {
+        "name": "Dimensions",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/aat/300435430",
         "propertyUrl": "cidoc:P2_has_type",
         "valueUrl": "http://vocab.getty.edu/aat/300418049"
     },
     {
+        "name": "Dimensions",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/aat/300418049",
         "propertyUrl": "rdf:type",
         "valueUrl": "cidoc:E55_Type"
     },
     {
+        "name": "Dimensions",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/aat/300418049",
         "propertyUrl": "rdfs:label",
@@ -246,17 +256,117 @@
         "@id": "https://example.com/id/Objects.csv/column/Inscribed"
     },
     {
-        "name": "Markings",
-        "null": ["NULL"],
-        "datatype": "string",
-        "@id": "https://example.com/id/Objects.csv/column/Markings"
+        "name": "Inscribed",
+        "dc:description": "intermediary Inscription statement",
+        "propertyUrl": "cidoc:P67i_is_referred_to_by",
+        "valueUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Inscribed",
+        "@id": "https://example.com/id/Objects.csv/virtual/Inscribed"
     },
-   {
-    "name": "SortNumber",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/SortNumber"
-   },
+    {
+        "name": "Inscribed",
+        "virtual": true,
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Inscribed",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E33_Linguistic_Object"
+    },
+    {
+        "name": "Inscribed",
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Inscribed",
+        "propertyUrl": "cidoc:P190_has_symbolic_content",
+        "datatype": "string",
+        "@id": "https://example.com/id/Objects.csv/column/Inscribed"
+    },
+    {
+        "name": "Inscribed",
+        "virtual": true,
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Inscribed",
+        "propertyUrl": "cidoc:P2_has_type",
+        "valueUrl": "http://vocab.getty.edu/aat/300028705"
+    },
+    {
+        "name": "Inscribed",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300028705",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E55_Type"
+    },
+    {
+        "name": "Inscribed",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300028705",
+        "propertyUrl": "rdfs:label",
+        "csvw:value": "Signature"
+    },
+    {
+        "name": "Inscribed",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300028705",
+        "propertyUrl": "cidoc:P2_has_type",
+        "valueUrl": "http://vocab.getty.edu/aat/300418049"
+    },
+    {
+        "name": "Description",
+        "dc:description": "intermediary description statement",
+        "propertyUrl": "cidoc:P67i_is_referred_to_by",
+        "valueUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Description",
+        "@id": "https://example.com/id/Objects.csv/virtual/Description"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Description",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E33_Linguistic_Object"
+    },
+    {
+        "name": "Description",
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Description",
+        "propertyUrl": "cidoc:P190_has_symbolic_content",
+        "datatype": "string",
+        "@id": "https://example.com/id/Objects.csv/column/Description"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://pressingmatter.nl/Bronbeek/{ObjectID}/Description",
+        "propertyUrl": "cidoc:P2_has_type",
+        "valueUrl": "http://vocab.getty.edu/aat/300435416"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300435416",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E55_Type"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300435416",
+        "propertyUrl": "rdfs:label",
+        "csvw:value": "Description"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300435416",
+        "propertyUrl": "cidoc:P2_has_type",
+        "valueUrl": "http://vocab.getty.edu/aat/300418049"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300418049",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E55_Type"
+    },
+    {
+        "name": "Description",
+        "virtual": true,
+        "aboutUrl" : "http://vocab.getty.edu/aat/300418049",
+        "propertyUrl": "rdfs:label",
+        "csvw:value": "Brief Text"
+    },
    {
     "name": "ClassificationID",
     "null": ["NULL"],
@@ -303,12 +413,6 @@
     "@id": "https://example.com/id/Objects.csv/column/DateEnd"
    },
    {
-    "name": "Description",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Description"
-   },
-   {
     "name": "Exhibitions",
     "null": ["NULL"],
     "datatype": "string",
@@ -331,168 +435,6 @@
     "null": ["NULL"],
     "datatype": "string",
     "@id": "https://example.com/id/Objects.csv/column/Notes"
-   },
-   {
-    "name": "CuratorialRemarks",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/CuratorialRemarks"
-   },
-   {
-    "name": "RelatedWorks",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/RelatedWorks"
-   },
-   {
-    "name": "Portfolio",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Portfolio"
-   },
-   {
-    "name": "PublicAccess",
-    "null": ["NULL"],
-    "datatype": "integer",
-    "@id": "https://example.com/id/Objects.csv/column/PublicAccess"
-   },
-   {
-    "name": "CuratorApproved",
-    "null": ["NULL"],
-    "datatype": "integer",
-    "@id": "https://example.com/id/Objects.csv/column/CuratorApproved"
-   },
-   {
-    "name": "OnView",
-    "null": ["NULL"],
-    "datatype": "integer",
-    "@id": "https://example.com/id/Objects.csv/column/OnView"
-   },
-   {
-    "name": "TextSearchID",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/TextSearchID"
-   },
-   {
-    "name": "Accountability",
-    "null": ["NULL"],
-    "datatype": "integer",
-    "@id": "https://example.com/id/Objects.csv/column/Accountability"
-   },
-   {
-    "name": "PaperFileRef",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/PaperFileRef"
-   },
-   {
-    "name": "ObjectNameID",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/ObjectNameID"
-   },
-   {
-    "name": "ObjectNameAltID",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/ObjectNameAltID"
-   },
-   {
-    "name": "State",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/State"
-   },
-   {
-    "name": "HistAttributions",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/HistAttributions"
-   },
-   {
-    "name": "Bibliography",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Bibliography"
-   },
-   {
-    "name": "LoanClass",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/LoanClass"
-   },
-   {
-    "name": "Edition",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Edition"
-   },
-   {
-    "name": "Cataloguer",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Cataloguer"
-   },
-   {
-    "name": "Curator",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/Curator"
-   },
-   {
-    "name": "ObjectDiamCMOLD",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/ObjectDiamCMOLD"
-   },
-   {
-    "name": "PaperSupport",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/PaperSupport"
-   },
-   {
-    "name": "IsVirtual",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/IsVirtual"
-   },
-   {
-    "name": "CatalogueISODate",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/CatalogueISODate"
-   },
-   {
-    "name": "CuratorRevISODate",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/CuratorRevISODate"
-   },
-   {
-    "name": "SortNumber2",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/SortNumber2"
-   },
-   {
-    "name": "DateRemarks",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/DateRemarks"
-   },
-   {
-    "name": "InJurisdiction",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/InJurisdiction"
-   },
-   {
-    "name": "SearchObjectNumber",
-    "null": ["NULL"],
-    "datatype": "string",
-    "@id": "https://example.com/id/Objects.csv/column/SearchObjectNumber"
    }
   ]
  },

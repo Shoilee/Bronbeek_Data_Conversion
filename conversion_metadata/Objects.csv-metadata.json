@@ -383,6 +383,11 @@
    },
    {
     "virtual": true,
+    "null": {
+            "@list": [{"name": "Dated", "null": ""},
+            {"name": "DateBegin", "null": ""},
+            {"name": "DateEnd", "null": ""}]
+        },
     "aboutUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Production/Time-span",
     "propertyUrl": "rdf:type",
     "valueUrl": "cidoc:E52_Time-Span"

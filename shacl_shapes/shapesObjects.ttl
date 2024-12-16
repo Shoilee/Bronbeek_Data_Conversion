@@ -41,7 +41,7 @@ shp:E22_HumanMadeObjectShape
     sh:message "A HumanMadeObject may made of raw-materials" ;
   ] .
 
-# TODO: Object type and classification
+# TODO: add Object type and classification
 
 shp:E12_ProductionShape
   a sh:NodeShape ;
@@ -66,18 +66,9 @@ shp:E52_Time-SpanShape
   a sh:NodeShape ;
   sh:targetClass crm:E52_Time-Span ;
   sh:property [
-    sh:path rdfs:label ;
-    sh:datatype xsd:string ;
-    sh:minCount 1 ;
-    sh:message "A Time-Span must have a string label." ;
-  ] ;
-  sh:property [
-    sh:path crm:P82a_begin_of_the_begin ;
-    sh:datatype xsd:string ;
-  ] ;
-  sh:property [
-    sh:path crm:P82b_end_of_the_end ;
-    sh:datatype xsd:string ;
+        sh:path (rdfs:label crm:P82a_begin_of_the_begin crm:P82b_end_of_the_end) ;
+        sh:minCount 1 ; # At least one of the properties must be present
+        sh:message "At least one of the properties DateBegin, DateEnd, or Dated must be present." ;
   ] .
 
 # Dimension, Inscibed, Description has been expresssed with Linguistic Object

@@ -38,9 +38,46 @@ shp:E22_HumanMadeObjectShape
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:node shp:E57_MaterialShape ;  
     sh:minCount 0 ;  
-    sh:message "A HumanMadeObject may be referred to a LinguisticObject, e.g., dimension statement." ;
+    sh:message "A HumanMadeObject may made of raw-materials" ;
   ];
   .
+
+shp:E12_ProductionShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E12_Production ; 
+  sh:property [
+    sh:path crm:P4_has_time-span ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node shp:E52_Time-SpanShape;  
+  ] ;
+  sh:property [
+    sh:path crm:P7_took_place_at ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node crm:E53_Place ; 
+  ] ;
+  sh:property [
+    sh:path crm:P14_carried_out_by ;
+    sh:nodeKind sh:BlankNodeOrIRI ;
+    sh:node crm:E39_Actor ; 
+  ] .
+
+shp:E52_Time-SpanShape
+  a sh:NodeShape ;
+  sh:targetClass la:TimeSpan ;
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;
+    sh:minCount 1 ;
+    sh:message "A Time-Span must have a string label." ;
+  ] ;
+  sh:property [
+    sh:path crm:P82a_begin_of_the_begin ;
+    sh:datatype xsd:string ;
+  ] ;
+  sh:property [
+    sh:path crm:P82b_end_of_the_end ;
+    sh:datatype xsd:string ;
+  ] .
 
 # Dimension, Inscibed, Description has been expresssed with Linguistic Object
 # Shape for LinguisticObject

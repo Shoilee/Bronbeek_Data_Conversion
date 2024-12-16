@@ -41,7 +41,7 @@ shp:E22_HumanMadeObjectShape
     sh:message "A HumanMadeObject may made of raw-materials" ;
   ] .
 
-# TODO: Object tuype and classification
+# TODO: Object type and classification
 
 shp:E12_ProductionShape
   a sh:NodeShape ;

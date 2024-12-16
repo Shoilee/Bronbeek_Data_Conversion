@@ -12,7 +12,6 @@ shp:E22_HumanMadeObjectShape
   sh:targetClass crm:E22_Human-Made_Object ;  # Target instances of E22_Human-Made_Object
   sh:name "Object shape"@en ;
   sh:description "Data Model for Bronbeek's Object"@en ;
-  sh:targetClass crm:E22_Human_Made_Object ;
   sh:closed false ;
   sh:ignoredProperties (rdf:type) ;
   sh:ignoredProperties (rdfs:label) ;

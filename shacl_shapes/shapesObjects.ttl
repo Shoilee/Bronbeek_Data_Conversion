@@ -32,15 +32,16 @@ shp:E22_HumanMadeObjectShape
     sh:node shp:E33_LinguisticObjectShape ; 
     sh:minCount 0 ; 
     sh:message "A HumanMadeObject may be referred to a LinguisticObject, e.g., dimension, inscription or description." ;
-  ];
+  ] ;
   sh:property [
     sh:path crm:P45_consists_of ;
     sh:nodeKind sh:BlankNodeOrIRI ;
     sh:node shp:E57_MaterialShape ;  
     sh:minCount 0 ;  
     sh:message "A HumanMadeObject may made of raw-materials" ;
-  ];
-  .
+  ] .
+
+# TODO: Object tuype and classification
 
 shp:E12_ProductionShape
   a sh:NodeShape ;
@@ -63,7 +64,7 @@ shp:E12_ProductionShape
 
 shp:E52_Time-SpanShape
   a sh:NodeShape ;
-  sh:targetClass la:TimeSpan ;
+  sh:targetClass crm:E52_Time-Span ;
   sh:property [
     sh:path rdfs:label ;
     sh:datatype xsd:string ;

@@ -1,8 +1,9 @@
-@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix shp: <https://pressingmatter.nl/Bronbeek/shape> .
 
 # Shape for E22_Human-Made_Object
@@ -65,11 +66,12 @@ shp:E12_ProductionShape
 shp:E52_Time-SpanShape
   a sh:NodeShape ;
   sh:targetClass crm:E52_Time-Span ;
-  sh:property [
-        sh:path (rdfs:label crm:P82a_begin_of_the_begin crm:P82b_end_of_the_end) ;
-        sh:minCount 1 ; # At least one of the properties must be present
-        sh:message "At least one of the properties DateBegin, DateEnd, or Dated must be present." ;
-  ] .
+  sh:or ( 
+        [ sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ] 
+        [ sh:property [ sh:path crm:P82a_begin_of_the_begin ; sh:minCount 1 ] ] 
+        [ sh:property [ sh:path crm:P82b_end_of_the_end ; sh:minCount 1 ] ]
+    ) ;
+  sh:message "At least one of the properties DateBegin, DateEnd, or Dated must be present." .
 
 # Dimension, Inscibed, Description has been expresssed with Linguistic Object
 # Shape for LinguisticObject

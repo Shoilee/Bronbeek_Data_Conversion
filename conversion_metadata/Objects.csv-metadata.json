@@ -64,6 +64,7 @@
     },
     {
         "name": "ClassificationID",
+        "null": ["NULL"],
         "datatype": "integer",
         "valueUrl": "https://pressingmatter.nl/Bronbeek/ClassificationID/{ClassificationID}",
         "@id": "https://example.com/id/Objects.csv/column/ClassificationID"
@@ -367,12 +368,6 @@
         "propertyUrl": "rdfs:label",
         "csvw:value": "Brief Text"
     },
-   {
-    "name": "ClassificationID",
-    "null": ["NULL"],
-    "datatype": "integer",
-    "@id": "https://example.com/id/Objects.csv/column/ClassificationID"
-   },
    {
     "virtual": true,
     "dc:description": ["production event"],

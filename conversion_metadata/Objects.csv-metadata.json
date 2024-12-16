@@ -394,6 +394,12 @@
     "valueUrl": "cidoc:E52_Time-Span"
    },
    {
+    "name": "Dated",
+    "aboutUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Production/Time-span",
+    "propertyUrl": "rdfs:label",
+    "@id": "https://example.com/id/Objects.csv/column/Dated"
+   },
+   {
     "name": "DateBegin",
     "null": 0,
     "aboutUrl": "http://pressingmatter.nl/Bronbeek/{ObjectID}/Production/Time-span",

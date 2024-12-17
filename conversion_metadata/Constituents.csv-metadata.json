@@ -311,6 +311,16 @@
         "valueUrl": "cidoc:E67_Birth"
     },
     {
+        "name":"DisplayDate",
+        "datatype":"string",
+        "null": {
+            "@list": [{"name": "BeginDate", "null": ["", 0]},
+            {"name": "BeginDateISO", "null": ["", 0]} ]
+        },
+        "aboutUrl": "https://pressingmatter.nl/Bronbeek/{ConstituentID}/birth_event",
+        "propertyUrl": "rdfs:label"
+    },
+    {
         "virtual": true,
         "null": {
             "@list": [{"name": "BeginDate", "null": ["", 0]},
@@ -366,6 +376,16 @@
         "valueUrl": "cidoc:E69_Death"
     },
     {
+        "name":"DisplayDate",
+        "datatype":"string",
+        "null": {
+            "@list": [{"name": "BeginDate", "null": ["", 0]},
+            {"name": "BeginDateISO", "null": ["", 0]} ]
+        },
+        "aboutUrl": "https://pressingmatter.nl/Bronbeek/{ConstituentID}/death_event",
+        "propertyUrl": "rdfs:label"
+    },
+    {
         "virtual": true,
         "dc:description": ["time-span for death event"],
         "null": {
@@ -407,11 +427,13 @@
         "@id": "https://example.com/id/Objects.csv/column/EndDate"
     },
     {
+        "name": "Biography",
         "dc:description": "biography",
         "propertyUrl": "cidoc:P67i_is_referred_to_by",
         "valueUrl": "https://pressingmatter.nl/Bronbeek/{ConstituentID}/biography"
     },
     {
+        "name": "Biography",
         "virtual": true,
         "aboutUrl" : "https://pressingmatter.nl/Bronbeek/{ConstituentID}/biography",
         "propertyUrl": "rdf:type",
@@ -426,12 +448,14 @@
         "@id": "https://example.com/id/Constituents.csv/column/Biography"
     },
     {
+        "name": "Biography",
         "virtual": true,
         "aboutUrl" : "https://pressingmatter.nl/Bronbeek/{ConstituentID}/biography",
         "propertyUrl": "cidoc:P2_has_type",
         "valueUrl": "http://vocab.getty.edu/page/aat/300435422"
     },
     {
+        "name": "Biography",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/page/aat/300435422",
         "propertyUrl": "rdf:type",
@@ -483,7 +507,6 @@
     },
     {
         "name": "Nationality",
-        "null": ["NULL"],
         "datatype": "string",
         "aboutUrl" : "https:www.example.com/{ConstituentID}/nationality",
         "propertyUrl": "rdfs:label",
@@ -511,33 +534,60 @@
         "csvw:value": "Nationality"
     },
     {
+        "name": "Institution",
+        "virtual": true,
+        "dc:description": ["Institution"],
+        "propertyUrl": "cidoc:P107i_is_current_or_former_member_of",
+        "valueUrl": "https:www.example.com/{ConstituentID}/Institution",
+        "@id": "https://example.com/id/Constituents.csv/virtual/Institution"
+    },
+    {
+        "name": "Institution",
+        "virtual": true,
+        "aboutUrl" : "https:www.example.com/{ConstituentID}/Institution",
+        "propertyUrl": "rdf:type",
+        "valueUrl": "cidoc:E74_Group"
+    },
+    {
+        "name": "Institution",
+        "datatype": "string",
+        "aboutUrl" : "https:www.example.com/{ConstituentID}/Institution",
+        "propertyUrl": "rdfs:label",
+        "@id": "https://example.com/id/Constituents.csv/column/Nationality"
+    },
+    {
+        "name": "NameTitle",
+        "null": ["NULL"],
+        "datatype": "string",
+        "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/NameTitle",
+        "@id": "https://example.com/id/Constituents.csv/column/NameTitle"
+    },
+    {
         "name": "CultureGroup",
         "null": ["NULL"],
         "datatype": "string",
+        "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/CultureGroup",
         "@id": "https://example.com/id/Constituents.csv/column/CultureGroup"
-    },
-    {
-        "name": "School",
-        "null": ["NULL"],
-        "datatype": "string",
-        "@id": "https://example.com/id/Constituents.csv/column/School"
     },
     {
         "name": "Remarks",
         "null": ["NULL"],
         "datatype": "string",
+        "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Remarks",
         "@id": "https://example.com/id/Constituents.csv/column/Remarks"
     },
     {
         "name": "Position",
         "null": ["NULL"],
         "datatype": "string",
+        "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Position",
         "@id": "https://example.com/id/Constituents.csv/column/Position"
     },
     {
         "name": "Suffix",
         "null": ["NULL"],
         "datatype": "string",
+        "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Suffix",
         "@id": "https://example.com/id/Constituents.csv/column/Suffix"
     }
   ]

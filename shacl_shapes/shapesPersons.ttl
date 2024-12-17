@@ -29,17 +29,34 @@ shp:PersonShape a sh:NodeShape ;
         sh:nodeKind sh:BlankNodeOrIRI ;
         sh:node shp:E33_LinguisticObjectShape ; 
         sh:minCount 0 ; 
-        sh:message "A person may be referred to a LinguisticObject, e.g., description." ;
+        sh:message "A person may be referred to a LinguisticObject, e.g., description or biography." ;
+    ] ;
+    sh:property [
+        sh:path crm:P107i_is_current_or_former_member_of ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node shp:E74_GroupShape ; 
+        sh:minCount 0 ; 
+        sh:message "A person can be a member of a group" ;
     ] ;
     sh:property [
         sh:path crm:P98i_was_born ;
         sh:node shp:LifeEventShape ;
+        sh:minCount 0 ; 
     ] ;
     sh:property [
         sh:path crm:P100i_died_in ;
         sh:node shp:LifeEventShape ;
-        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:minCount 0 ; 
     ] .
+
+crm:E74_GroupShape a sh:NodeShape ;
+    sh:targetClass crm:E74_Group ;  # Apply this shape to nodes of type E74_Group
+    sh:property [
+        sh:path rdfs:label ;  # Ensure the Group has a label
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;  # At least one label is required
+    ] ;
+    sh:targetObjectsOf crm:P107i_is_current_or_former_member_of .  # person is member of a group 
 
 shp:E33_LinguisticObjectShape
   a sh:NodeShape ;
@@ -121,5 +138,3 @@ shp:E55_TypeShape
     sh:minCount 1 ;
     sh:message "A type must have a label as a language-tagged string." ;
   ] .
-
-# TODO: Nationality shape; currently giving error

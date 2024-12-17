@@ -416,24 +416,28 @@
     "name": "Exhibitions",
     "null": ["NULL"],
     "datatype": "string",
+    "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Exhibitions",
     "@id": "https://example.com/id/Objects.csv/column/Exhibitions"
    },
    {
     "name": "Provenance",
     "null": ["NULL"],
     "datatype": "string",
+    "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Provenance",
     "@id": "https://example.com/id/Objects.csv/column/Provenance"
    },
    {
     "name": "PubReferences",
     "null": ["NULL"],
     "datatype": "string",
+    "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/PubReferences",
     "@id": "https://example.com/id/Objects.csv/column/PubReferences"
    },
    {
     "name": "Notes",
     "null": ["NULL"],
     "datatype": "string",
+    "propertyUrl": "https://pressingmatter.nl/Bronbeek/vocab/Notes",
     "@id": "https://example.com/id/Objects.csv/column/Notes"
    }
   ]

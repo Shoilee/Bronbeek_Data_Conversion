@@ -1,0 +1,122 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix shp: <https://pressingmatter.nl/Bronbeek/shape> .
+
+shp:PersonShape a sh:NodeShape ;
+    sh:targetClass crm:E21_Person ;  # Applies to all nodes of type 'Person'
+    sh:name "Object shape"@en ;
+    sh:description "Data Model for Person Entity"@en ;
+    sh:closed false ;
+    sh:ignoredProperties (rdf:type) ;
+    sh:ignoredProperties (rdfs:label) ;
+    sh:property [
+        sh:path crm:P1_is_identified_by ;
+        sh:node [
+        sh:or ( 
+            shp:E42_IdentifierShape 
+            shp:E33_E41_LinguisticAppellationShape
+        ) ;  # Either an identifier or a linguistic appellation
+        ] ;
+        sh:minCount 1 ; 
+        sh:message "The person must have at least one identifier or linguistic appellation." ;
+    ] ;
+    sh:property [
+        sh:path crm:P67i_is_referred_to_by ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+        sh:node shp:E33_LinguisticObjectShape ; 
+        sh:minCount 0 ; 
+        sh:message "A person may be referred to a LinguisticObject, e.g., description." ;
+    ] ;
+    sh:property [
+        sh:path crm:P98i_was_born ;
+        sh:node shp:LifeEventShape ;
+    ] ;
+    sh:property [
+        sh:path crm:P100i_died_in ;
+        sh:node shp:LifeEventShape ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] .
+
+shp:E33_LinguisticObjectShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E33_Linguistic_Object ;  # Target LinguisticObject type
+  sh:property [
+    sh:path crm:P2_has_type ;
+    sh:node shp:E55_TypeShape ;  # Points to Type
+    sh:minCount 1 ;  # At least one classified_as is required
+    sh:message "A LinguisticObject must be classified as a Type." ;
+  ] ;
+  sh:property [
+    sh:path crm:P190_has_symbolic_content ;
+    sh:datatype xsd:string ;  # Content must be a string
+    sh:minCount 1 ;  # At least one content is required 
+    sh:message "A LinguisticObject must have content as a string." ;
+  ]  ;
+  sh:property [
+    sh:path crm:P106_is_composed_of ;
+    sh:node shp:E33_E41_LinguisticAppellationShape ;  # Points to Type
+    sh:message "Optional field." ;
+  ] .
+
+# Shape for E42_Identifier
+shp:E42_IdentifierShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E42_Identifier ;  # Target instances of E42_Identifier
+  sh:name "Indentifer shape"@en ;
+  sh:description "Accession number used by Bronbeek museum"@en ;
+  sh:deactivated false ;
+sh:property [
+    sh:path crm:P190_has_symbolic_content ;
+    sh:datatype xsd:string ;  # Symbolic content should be a string
+    sh:minCount 1 ;  
+    sh:message "An identifier must have symbolic content as a string." ;
+] ;
+sh:property [
+    sh:path crm:P2_has_type ;
+    sh:nodeKind sh:IRI ;  # Links to aat vocabulary
+    sh:class crm:E55_Type ;  # Type must reference an E55_Type
+    sh:pattern "^http://vocab\\.getty\\.edu/aat/.*" ;  # Regex for prefix
+    sh:minCount 0 ;  # Optional property
+    sh:message "An identifier can be described with AAT vocabulary." ;
+  ] .
+
+shp:LifeEventShape a sh:NodeShape ;
+    sh:property [
+        sh:path crm:P4_has_time-span ;
+        sh:node shp:TimeSpanShape ;
+        sh:nodeKind sh:BlankNodeOrIRI ;
+    ] ;
+    sh:property [
+        sh:path crm:P7_took_place_at: ;
+        sh:node shp:PlaceShape ;
+    ] .
+
+shp:E52_Time-SpanShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E52_Time-Span ;
+  sh:or ( 
+        [ sh:property [ sh:path rdfs:label ; sh:minCount 1 ] ] 
+        [ sh:property [ sh:path crm:P82a_begin_of_the_begin ; sh:minCount 1 ] ] 
+        [ sh:property [ sh:path crm:P82b_end_of_the_end ; sh:minCount 1 ] ]
+    ) ;
+    sh:message "The node must have a value for at least one property value." . 
+
+# TODO: Describe E53_PlaceShape properly 
+shp:E53_PlaceShape a sh:NodeShape .
+
+# Shape for E55_Type
+shp:E55_TypeShape
+  a sh:NodeShape ;
+  sh:targetClass crm:E55_Type ;  # Target instances of E55_Type
+  sh:property [
+    sh:path rdfs:label ;
+    sh:datatype xsd:string ;  # Label must be a language-tagged string
+    sh:minCount 1 ;
+    sh:message "A type must have a label as a language-tagged string." ;
+  ] .
+
+# TODO: Nationality shape; currently giving error

@@ -79,7 +79,10 @@ sh:property [
     sh:path crm:P2_has_type ;
     sh:nodeKind sh:IRI ;  # Links to aat vocabulary
     sh:class crm:E55_Type ;  # Type must reference an E55_Type
-    sh:pattern "^http://vocab\\.getty\\.edu/aat/.*" ;  # Regex for prefix
+    sh:pattern [ sh:or 
+                  ("^http://vocab\\.getty\\.edu/aat/.*"
+                    "^http://www\\.example\\.com/.*"); 
+                ];  
     sh:minCount 0 ;  # Optional property
     sh:message "An identifier can be described with AAT vocabulary." ;
   ] .

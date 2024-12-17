@@ -468,14 +468,16 @@
         "@id": "https://example.com/id/Constituents.csv/column/Code"
     },
     {
+        "name": "Nationality",
         "virtual": true,
         "dc:description": ["nationality"],
         "propertyUrl": "cidoc:P2_has_type",
-        "valueUrl": "https://pressingmatter.nl/Bronbeek/{ConstituentID}/nationality"
+        "valueUrl": "https:www.example.com/{ConstituentID}/nationality"
     },
     {
+        "name": "Nationality",
         "virtual": true,
-        "aboutUrl" : "https://pressingmatter.nl/Bronbeek/{ConstituentID}/nationality",
+        "aboutUrl" : "https:www.example.com/{ConstituentID}/nationality",
         "propertyUrl": "rdf:type",
         "valueUrl": "cidoc:E55_Type"
     },
@@ -483,23 +485,26 @@
         "name": "Nationality",
         "null": ["NULL"],
         "datatype": "string",
-        "aboutUrl" : "https://pressingmatter.nl/Bronbeek/{ConstituentID}/nationality",
+        "aboutUrl" : "https:www.example.com/{ConstituentID}/nationality",
         "propertyUrl": "rdfs:label",
         "@id": "https://example.com/id/Constituents.csv/column/Nationality"
     },
     {
+        "name": "Nationality",
         "virtual": true,
-        "aboutUrl" : "https://pressingmatter.nl/Bronbeek/{ConstituentID}/nationality",
+        "aboutUrl" : "https:www.example.com/{ConstituentID}/nationality",
         "propertyUrl": "cidoc:P2_has_type",
         "valueUrl": "http://vocab.getty.edu/aat/300379842"
     },
     {
+        "name": "Nationality",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/aat/300379842",
         "propertyUrl": "rdf:type",
         "valueUrl": "cidoc:E55_Type"
     },
     {
+        "name": "Nationality",
         "virtual": true,
         "aboutUrl" : "http://vocab.getty.edu/aat/300379842",
         "propertyUrl": "rdfs:label",

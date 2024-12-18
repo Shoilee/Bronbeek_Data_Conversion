@@ -1,0 +1,50 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix ex: <http://www.example.com/Bronbeek/> .
+@prefix aat: <http://vocab.getty.edu/aat/> .
+
+# Shape for Provenance Activity (E7_Activity)
+ex:ProvenanceActivityShape a sh:NodeShape ;
+    sh:targetClass crm:E7_Activity ;
+    sh:property [
+        sh:path crm:P14_carried_out_by ;
+        sh:nodeKind sh:IRI ;
+        sh:message "E7_Activity must have a P14_carried_out_by property pointing to an IRI (constituent)." ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P2_has_type ;
+        sh:hasValue <http://vocab.getty.edu/aat/300055863> ;
+        sh:message "E7_Activity must have a P2_has_type property with the value http://vocab.getty.edu/aat/300055863 (Type)." ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P9_consists_of ;
+        sh:nodeKind sh:IRI ;
+        sh:message "E7_Activity must have a P9_consists_of property pointing to an IRI (acquisition)." ;
+        sh:minCount 1 ;
+    ] .
+
+# Shape for Acquisition (E8_Acquisition)
+ex:AcquisitionShape a sh:NodeShape ;
+    sh:targetClass crm:E8_Acquisition ;
+    sh:property [
+        sh:path crm:P23_transferred_titled_from ;
+        sh:nodeKind sh:IRI ;
+        sh:message "E8_Acquisition must have a P23_transferred_titled_from property pointing to an IRI (constituent)." ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path crm:P24_transferred_titled_of ;
+        sh:nodeKind sh:IRI ;
+        sh:message "E8_Acquisition must have a P24_transferred_titled_of property pointing to an IRI (object)." ;
+        sh:minCount 1 ;
+    ] ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:datatype xsd:string ;
+        sh:message "E8_Acquisition must have a rdfs:label property with a string value (event)." ;
+        sh:minCount 1 ;
+    ] .

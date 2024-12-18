@@ -2,7 +2,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
-
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix shp: <https://pressingmatter.nl/Bronbeek/shape> .
 
@@ -39,7 +39,21 @@ shp:E22_HumanMadeObjectShape
     sh:node shp:E57_MaterialShape ;  
     sh:minCount 0 ;  
     sh:message "A HumanMadeObject may made of raw-materials" ;
-  ] .
+  ] ;
+  sh:property [
+    sh:path crm:P51_has_former_or_current_owner ;
+    sh:description "A HumanMadeObject can have formaer owner; part of provenance" ;
+    sh:nodeKind shp:IRI ; 
+    sh:node shp:PersonShape ;  
+    sh:minCount 0 ; 
+  ] ;
+  sh:property [
+    sh:path skos:related ;
+    sh:description "A HumanMadeObject can be related with constitents without proper provenance" ;
+    sh:nodeKind shp:IRI ; 
+    sh:node shp:PersonShape ;  
+    sh:minCount 0 ; 
+  ].
 
 # TODO: add Object type and classification
 
@@ -155,3 +169,6 @@ shp:E57_MaterialShape
     sh:minCount 1 ;
     sh:message "A type must have a label as a language-tagged string." ;
   ] .
+
+shp:PersonShape a sh:NodeShape ;
+    sh:targetClass crm:E21_Person .

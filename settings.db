@@ -1,0 +1,10 @@
+﻿/*  Saved settings
+    Date: Thu Dec 19 14:53:37 2024
+*/
+
+
+%	File name for jquery.js, served as HTML resource "jquery"
+setting(jquery:version, '2.1.3.min').
+
+%	Stack limit in MB for ClioPatria pool
+setting(cliopatria:stack_size, 2048).

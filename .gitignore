@@ -1,1 +1,6 @@
 .DS_Store
+
+# Cliopatria generated
+config-enabled/
+daemon.pl
+run.pl

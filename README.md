@@ -102,7 +102,7 @@ rdf_library:rdf_load_library('bronbeek').
 
 ---
 
-## Data Enrichment
+### Step-4: Data Enrichment
 
 Enhance the RDF data with linked data enrichment using the `enrich_data_bronbeek.py` script. This adds provenance activity information, such as acquisition events, former owners, and object-to-person relationships.
 
@@ -115,11 +115,3 @@ python enrich_data_bronbeek.py <folder-path-of-all-nq-files>
 
 > **Note**: The [enrich_data_bronbeek.py](enrich_data_bronbeek.py) script expects `.nq` files as input.
 
----
-
-## Summary of Outputs
-
-1. **Conversion**: CSV files → RDF files (`.nq`).
-2. **Compression**: RDF files compressed to `.nq.gz`.
-3. **Upload**: Files loaded into ClioPatria.
-4. **Enrichment**: Enriched RDF files containing provenance and linked data.

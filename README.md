@@ -1,9 +1,9 @@
-# Bronbeek Data Pipeline Documentation
+# Bronbeek Data Conversion Pipeline
 
 This pipeline supports the transformation of collection data originally exported from the The Museum System (TMS) as a .bak backup file from 2018. The .bak file has been unpacked and converted into structured CSV files that represent various aspects of the museum's collection, such as accession methods, object metadata, person roles, and connection with objects. The goal of this pipeline is to:
 
-- Convert these CSV datasets into RDF (Resource Description Framework) using semantic web standards,
-- Support linked data publishing for [PM-Sampo](https://pmsampo.demo.seco.cs.aalto.fi/en/)
+- Convert these CSV datasets into RDF (Resource Description Framework),
+- Support linked data publishing for [PM-Sampo](https://pmsampo.demo.seco.cs.aalto.fi/en/),
 - Enable ingestion into platforms like ClioPatria for querying and enrichment,
 - Lay the foundation for further exploration, visualization, and integration with other heritage datasets.
 

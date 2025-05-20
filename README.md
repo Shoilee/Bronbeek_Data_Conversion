@@ -116,9 +116,3 @@ python enrich_data_bronbeek.py <folder-path-of-all-nq-files>
 2. **Compression**: RDF files compressed to `.nq.gz`.
 3. **Upload**: Files loaded into ClioPatria.
 4. **Enrichment**: Enriched RDF files containing provenance and linked data.
-
-For questions or further assistance, refer to the documentation links or contact the project maintainer.
-
---- 
-
-This improved documentation is more user-friendly and professional while retaining all the critical information. Let me know if you need further refinements!
